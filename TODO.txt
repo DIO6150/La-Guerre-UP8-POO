@@ -1,0 +1,58 @@
+make functions const when necessary and think about & and &&
+
+make a better input function than cin << /!\ Urgent en vrai
+
+générer une map en début de partie
+
+rendre le bouton de sauvegarde fonctionnel
+
+rendre le bouton de chargement fonctionnel
+
+renommé les clés de localisation et les réorganiser de manière à ce que ce soit logique; ex:
+k_log
+k_name
+k_error
+
+->
+
+action
+icon
+short
+pawn
+list
+etc...
+
+->
+
+info
+ask
+
+ajouter un genre de menu principal ? (un truc animé ça pourrait être rigolo à voir parce qu'il faut que je tavaille sur d'autres trucs aussi)
+
+modifier StrColor pour pouvoir indiquer couleur de fond en plus ainsi que l'index de l'argument
+par exemple:
+"{C:GREEN X:WHITE}%s1"
+indique : texte vert, fond blanc colle le deuxième argument en string
+note sur les index et le parsing:
+si j'écris "%s1000 toto" ça me donnera le 1001ème arg + toto
+mais si j'écris "%1000toto" ça me donnera aussi la même chose, parce que ça lit tous les chiffres consécutifs
+la manière dont tout ça pourrait marcher:
+
+Les couleurs:
+    trouve le premier "{"
+    copie tout le texte jusqu'au prochain "}" dans VAR1 (si existe pas => erreur)
+    Split VAR1 par " "
+    Le patterne des premières lettres c'est soit {C, X}, {X, C}, {C}, {X} (sinon erreur)
+    Assigne la string speciale à la couleur correspondante
+    ajoute la string à la liste des tokens.
+
+Le collage:
+    On cherche %
+    On regarde le char d'après
+    Si c'est pas un truc qu'on connait erreur sinon on continue
+    On regarde le char encore d'après si c'est pas un chiffre erreur sinon on continue
+    On regarde le char encore d'après si c'est pas un chiffre on s'arrête la et on passe à la suite sinon on recommence
+    On dispose maintenant de 3 infos: la position de la chaine à insérer, le type de donnée à insérer, l'indexe de l'argument
+    si on est out of bound au niveau de l'indexe on renvoit une erreur, sinon on continue
+    on retire la taille de la chaine spéciale à savoir min(3, 2 + nb_digits)
+

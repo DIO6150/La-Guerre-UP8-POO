@@ -1,82 +1,114 @@
 {
-    "k_free": "%s",
-    "k_square_brackets": "[%s]",
-    "k_common_option": "  [{GOLD}%i{}] %s",
+    "k_common_list_element": "  [{C:GOLD}#1#{}] #2#",
+
+
+
+    "k_name_color_black": "noir",
+    "k_name_color_red": "rouge",
+    "k_name_color_green": "vert",
+    "k_name_color_yellow": "jaune",
+    "k_name_color_blue": "bleu",
+    "k_name_color_magenta": "magenta",
+    "k_name_color_cyan": "cyan",
+    "k_name_color_white": "blanc",
+    "k_name_color_gold": "or",
+
+    "k_name_action_attack": "Attaquer",
+    "k_name_action_move": "Se déplacer",
+    "k_name_action_create_pawn": "Créer un pion",
+    "k_name_action_transform": "Se transformer en château",
+    "k_name_action_end_turn": "Mettre fin à votre tour",
+    "k_name_action_save": "Sauvegarder la partie",
+    "k_name_action_load": "Charger la partie",
+    "k_name_action_settings": "Paramètres",
+    "k_name_action_language": "Changer la langue.",
+    "k_name_action_lang_info": "Sélectionner la langue : ",
+    "k_name_action_lang_fr": "Français",
+    "k_name_action_lang_en": "English",
+    "k_name_action_quit": "Quitter le jeu",
+    "k_name_action_cancel": "Annuler",
     
-    "k_red": "rouge",
-    "k_blue": "bleu",
-    "k_green": "vert",
-    "k_black": "noir",
-    "k_gold": "or",
-    
-    "k_faction_turn": "C'est le tour de la faction %s",
-    "k_gold_info": "Vous avez {GOLD}%i{} d'or.",
-    "k_possible_actions_info": "Voici les actions possibles :",
-    "k_pawn_info": "[%s] %s | Vie: {GREEN}%i{} | Position: ({RED}%i{}, {RED}%i{}) | Stamina: {GREEN}%i{}/{GREEN}%i{}",
-    "k_action_choice_info": "Vous avez sélectionné [{GOLD}%s{}].",
-    "k_action_list_info": "  [{GOLD}%i{}] %s",
+    "k_name_pawn_castle": "chateau",
+    "k_name_pawn_lord": "seigneur",
+    "k_name_pawn_warrior": "guerrier",
+    "k_name_pawn_farmer": "paysan",
+
+
+
+    "k_info_faction": "C'est le tour de la faction #1#",
+    "k_info_gold": "Vous avez {C:GOLD}#1#{} d'or.",
+    "k_info_actions": "Voici les actions possibles :",
+    "k_info_pawn": "[#1#] #2# | Vie: {C:GREEN}#3#{} | Position: ({C:RED}#4#{}, {C:RED}#5#{}) | Stamina: {C:GREEN}#6#{}/{C:GREEN}#7#{}",
+    "k_info_choice": "Vous avez sélectionné [#1#].",
+
+
+
     "k_log_title_info": "Historique des actions effectuée durant ce tour :",
     "k_log_empty_info": "-----",
-    "k_log_list": "  [{GOLD}%i{}] %s",
+    "k_log_list": "  [{C:GOLD}#1#{}] #2#",
     
-    "k_action_range_error": "{RED}Choisissez un nombre entre {GOLD}1{RED} et {GOLD}%i{RED}.",
-    "k_action_target_range_error": "{RED}Vous n'êtes à la portée d'aucun ennemis.",
-    "k_invalid_choice_error": "{RED}Choix invalide.",
-    "k_no_action_error": "{RED}Cette unité n'a pas d'actions à executer.",
-    "k_not_enought_gold_error": "{RED}Vous n'avez pas assez d'or pour construire cette unité.",
-    "k_input_unknown_char_error": "{RED}%c n'est pas un caractère valide.",
-    "k_tile_full_error": "{RED}Cette case est déjà prise.",
-    "k_action_move_outside_error": "{RED}Vous ne pouvez pas vous déplacer en dehors de la grille.",
-    "k_action_move_not_enought_stamina": "{RED}Cette unité n'a pas assez de stamina pour se déplacer aussi loin.",
-    "k_action_create_pawn_outside_error": "{RED}Vous ne pouvez pas créer un pion en dehors de la grille.",
-    "k_action_attack_range_error": "{RED}Vous ne pouvez pas attaquer un pion à cette distance.",
-    
-    "k_action_name_attack": "Attaquer",
-    "k_action_name_move": "Se déplacer",
-    "k_action_name_create_pawn": "Créer un pion",
-    "k_action_name_transform": "Se transformer en château",
-    "k_action_name_end_turn": "Mettre fin à votre tour",
-    "k_action_name_save": "Sauvegarder la partie",
-    "k_action_name_load": "Charger la partie",
-    "k_action_name_settings": "Paramètres",
-    "k_action_name_language": "Changer la langue.",
-    "k_action_name_lang_info": "Sélectionner la langue : ",
-    "k_action_name_lang_fr": "Français",
-    "k_action_name_lang_en": "English",
-    "k_action_name_quit": "Quitter le jeu",
-    "k_action_name_cancel": "Annuler",
-    
-    "k_action_log_attack": "Vous avez attaqué le pion ennemi %s ({RED}%i{}, {RED}%i{}).",
-    "k_action_log_move": "Vous avez déplacé votre pion %s de ({RED}%i{}, {RED}%i{}) à ({RED}%i{}, {RED}%i{}).",
-    "k_action_log_create_pawn": "Vous avez créé le pion %s à la position ({RED}%i{}, {RED}%i{}).",
-    "k_action_log_transform": "Votre seigneur ({RED}%i{}, {RED}%i{}) s'est transformé en chateau.",
-    "k_action_log_lang_change": "Vous avez changer la langue du jeu en {GOLD}%s{}.",
-    "k_log_earned_gold": "Vous avez gagné {GOLD}%i{} d'or.",
 
-    "k_pawn_name_castle": "chateau",
-    "k_pawn_name_lord": "seigneur",
-    "k_pawn_name_warrior": "guerrier",
-    "k_pawn_name_farmer": "paysan",
-    
-    "k_pawn_icon_castle": "♜",
-    "k_pawn_icon_lord": "♚",
-    "k_pawn_icon_warrior": "♞",
-    "k_pawn_icon_farmer": "♟",
-    "k_pawn_icon_empty": "▢",
 
-    "k_pawn_short_castle": "C",
-    "k_pawn_short_lord": "S",
-    "k_pawn_short_warrior": "G",
-    "k_pawn_short_farmer": "P",
+    "k_error_input_invalid": "{C:RED}Choix invalide.",
+    "k_error_input_action_range": "{C:RED}Choisissez un nombre entre {C:GOLD}1{C:RED} et {C:GOLD}#1#{C:RED}.",
+    "k_error_input_unknown_char": "{C:RED}#1# n'est pas un caractère valide.",
+
+    "k_error_action_no": "{C:RED}Cette unité n'a pas d'actions à executer.",
+    "k_error_action_target_range": "{C:RED}Vous n'êtes à la portée d'aucun ennemis.",
+    "k_error_action_move_outside": "{C:RED}Vous ne pouvez pas vous déplacer en dehors de la grille.",
+    "k_error_action_move_stamina": "{C:RED}Cette unité n'a pas assez de stamina pour se déplacer aussi loin.",
+    "k_error_action_move_tile_full": "{C:RED}Vous ne pouvez pas vous déplacer sur une case déjà occupée.",
+    "k_error_action_create_pawn_poor": "{C:RED}Vous n'avez pas assez d'or pour construire cette unité.",
+    "k_error_action_create_pawn_outside": "{C:RED}Vous ne pouvez pas créer un pion en dehors de la grille.",
+    "k_error_action_attack_range": "{C:RED}Vous ne pouvez pas attaquer un pion à cette distance.",
+
+    "k_error_save_data_no": "{C:RED}Aucune données sauvegardées.",
     
-    "k_north_icon": "N",
-    "k_south_icon": "S",
-    "k_west_icon": "O",
-    "k_east_icon": "E",
+
+
+    "k_log_action_attack": "Vous avez attaqué le pion ennemi #1# ({C:RED}#2#{}, {C:RED}#3#{}).",
+    "k_log_action_move": "Vous avez déplacé votre pion #1# de ({C:RED}#2#{}, {C:RED}#3#{}) à ({C:RED}#4#{}, {C:RED}#5#{}).",
+    "k_log_action_create_pawn": "Vous avez créé le pion #1# à la position ({C:RED}#2#{}, {C:RED}#3#{}).",
+    "k_log_action_transform": "Votre seigneur ({C:RED}#1#{}, {C:RED}#2#{}) s'est transformé en chateau.",
+    "k_log_action_lang_change": "Vous avez changer la langue du jeu en {C:GOLD}#1#{}.",
+    "k_log_action_end_gold": "Vous avez gagné {C:GOLD}#1#{} d'or.",
+    "k_log_action_canceled": "Action annulée: {C:BLUE}#1#{}.",
+
+    "k_log_save_save_game": "Vous avez sauvegardé la partie.",
+    "k_log_save_load_game": "Vous avez chargé une donnée de sauvegarde.",
+
+
+
+    "k_icon_pawn_castle": "♜",
+    "k_icon_pawn_lord": "♚",
+    "k_icon_pawn_warrior": "♞",
+    "k_icon_pawn_farmer": "♟",
+    "k_icon_pawn_empty": "▢",
+
+    "k_icon_north": "N",
+    "k_icon_south": "S",
+    "k_icon_west": "O",
+    "k_icon_east": "E",
+
+
+
+    "k_short_pawn_castle": "C",
+    "k_short_pawn_lord": "S",
+    "k_short_pawn_warrior": "G",
+    "k_short_pawn_farmer": "P",
+
+    "k_short_yes": "o",
+    "k_short_no": "n",
     
-    "k_action_ask" : "Veuillez sélectionner le numéro de l'action à entreprendre.",
-    "k_create_pawn_type_ask": "Quel type de pion veux tu créer ? ({GOLD}P{} / {GOLD}G{} / {GOLD}S{} / {GOLD}C{})",
-    "k_create_pawn_pos_ask": "Où voulez vous vous poser le pion ? (N, S, O, E)",
-    "k_move_pos_ask": "Où voulez vous vous déplacer ? ({RED}x{}, {RED}y{})",
-    "k_attack_target_ask": "Quel pion voulez vous attaquer ?"
+
+    
+    "k_ask_action" : "Veuillez sélectionner le numéro de l'action à entreprendre.",
+    "k_ask_action_create_pawn_type": "Quel type de pion veux tu créer ? ({C:GOLD}P{} / {C:GOLD}G{} / {C:GOLD}S{} / {C:GOLD}C{})",
+    "k_ask_action_create_pawn_pos": "Où voulez vous vous poser le pion ? (N, S, O, E)",
+    "k_ask_action_move_pos": "Où voulez vous vous déplacer ? ({C:RED}x{}, {C:RED}y{})",
+    "k_ask_action_attack_target": "Quel pion voulez vous attaquer ?",
+
+    "k_ask_save_save_name": "Quel est le nom de la sauvegarde ?",
+    "k_ask_save_save_overwrite": "Il y a déjà des données de sauvegarde à cet emplacement, écraser (o, n) ?",
+    "k_ask_save_load_index": "Sélectionnez l'indice des données de sauvegarde à charger."
 }

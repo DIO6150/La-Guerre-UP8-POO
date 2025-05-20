@@ -1,0 +1,67 @@
+{
+    "mael": {
+        "board": [
+            {
+                "faction": 0,
+                "health": 20,
+                "movement": 0,
+                "position": [
+                    0,
+                    0
+                ],
+                "type": "castle"
+            },
+            {
+                "faction": 0,
+                "health": 10,
+                "movement": 3,
+                "position": [
+                    1,
+                    1
+                ],
+                "type": "warrior"
+            },
+            {
+                "faction": 1,
+                "health": 10,
+                "movement": 3,
+                "position": [
+                    18,
+                    18
+                ],
+                "type": "warrior"
+            },
+            {
+                "faction": 1,
+                "health": 20,
+                "movement": 0,
+                "position": [
+                    19,
+                    18
+                ],
+                "type": "castle"
+            },
+            {
+                "faction": 1,
+                "health": 5,
+                "movement": 1,
+                "position": [
+                    19,
+                    19
+                ],
+                "type": "lord"
+            }
+        ],
+        "faction_turn": 0,
+        "gold": [
+            [
+                0,
+                15
+            ],
+            [
+                1,
+                15
+            ]
+        ]
+    }
+}

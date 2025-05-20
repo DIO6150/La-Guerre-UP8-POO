@@ -7,10 +7,10 @@
 
 enum class Color
 {
-    RED, BLUE, GOLD, BLACK, LIGHT_RED, GREEN,
-    NORMAL
+    BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, GOLD, NONE
 };
 
+std::string GetColorID (Color color, bool bg = false);
 std::string Dye (std::string str, Color color);
 Color ColorFromString (std::string str);
-std::string StringFromColor (Color color);
+std::string KeyFromColor (Color color);

@@ -30,6 +30,7 @@ public:
     virtual std::vector<Action> GetActionList () = 0;
     virtual std::string GetName () = 0;
     virtual std::string GetIcon () = 0;
+    virtual const std::string GetType () const = 0;
 
     bool Attack (Pawn *pawn);
     bool Move (int x, int y);
@@ -46,6 +47,7 @@ public:
     std::vector<Action> GetActionList ();
     std::string GetName ();
     std::string GetIcon ();
+    const std::string GetType () const;
 };
 
 class Lord : public Pawn
@@ -58,6 +60,7 @@ public:
     std::vector<Action> GetActionList ();
     std::string GetName ();
     std::string GetIcon ();
+    const std::string GetType () const;
 };
 
 class Warrior : public Pawn
@@ -70,6 +73,7 @@ public:
     std::vector<Action> GetActionList ();
     std::string GetName ();
     std::string GetIcon ();
+    const std::string GetType () const;
 };
 
 class Farmer : public Pawn
@@ -82,4 +86,5 @@ public:
     std::vector<Action> GetActionList ();
     std::string GetName ();
     std::string GetIcon ();
+    const std::string GetType () const;
 };

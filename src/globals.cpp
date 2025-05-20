@@ -17,7 +17,7 @@ Board *Globals::GameBoard = new Board {};
 
 void Globals::LoadLanguage (std::string language_file)
 {
-    // CurrentLanguage = language_file;
+    // TODO : make it prettyier by copying file content to json without getline
     Language.clear ();
 
     std::ifstream file {language_file};
@@ -38,16 +38,11 @@ void Globals::LoadLanguage (std::string language_file)
     file.close ();
 }
 
-std::string Globals::GetTranslation (std::string string_key)
+std::string Globals::GetTranslation (std::string string_key, bool remove_color)
 {
     std::map<std::string, std::string>::iterator it;
-    if ( (it = Language.find (string_key)) == Language.end ())
-    {
-        return (StrColor ("{RED}Language Key : {GOLD}%s{RED} does not exist.", string_key.c_str ()));
-    }
-    
-    // std::cout << (*it).first << " : " << (*it).second << std::endl;
-    
+    if ((it = Language.find (string_key)) == Language.end ()) return (StrPretty ("{C:RED}Language Key : {C:YELLOW}#1#{C:RED} does not exist.", string_key));
+    if (remove_color) return (StrRemoveColor ((*it).second));
     return ((*it).second);
 }
 

@@ -3,7 +3,6 @@
 #include "colors.hpp"
 #include "globals.hpp"
 #include "pawn.hpp"
-#include "string_color.hpp"
 
 #include <iostream>
 

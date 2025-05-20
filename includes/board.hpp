@@ -39,4 +39,9 @@ public:
 
     Color GetPlayingFaction ();
     void NextPlayer ();
+
+    void Clear ();
+
+    void SetGold (Color faction, int gold);
+    void SetFactionPlaying (Color faction);
 };

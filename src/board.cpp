@@ -131,3 +131,23 @@ void Board::NextPlayer ()
     if (m_CurrentFaction == Color::RED) m_CurrentFaction = Color::BLUE;
     else if (m_CurrentFaction == Color::BLUE) m_CurrentFaction = Color::RED;
 }
+
+
+void Board::Clear ()
+{
+    for (auto &pawn : m_Grid)
+    {
+        delete pawn;
+        pawn = nullptr;
+    }
+}
+
+void Board::SetGold (Color faction, int gold)
+{
+    m_Gold [faction] = gold;
+}
+
+void Board::SetFactionPlaying (Color faction)
+{
+    m_CurrentFaction = faction;
+}

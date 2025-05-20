@@ -3,7 +3,6 @@
 #include "colors.hpp"
 #include "globals.hpp"
 #include "pawn.hpp"
-#include "string_color.hpp"
 
 #include <iostream>
 
@@ -22,23 +21,28 @@ std::vector<Action> Lord::GetActionList ()
 {
     return {
         {
-            Globals::GetTranslation ("k_action_name_attack"), [this] () -> bool { return (Common::Attack (this)); }
+            Globals::GetTranslation ("k_name_action_attack"), [this] () -> bool { return (Common::Attack (this)); }
         },
         {
-            Globals::GetTranslation ("k_action_name_move"), [this] () -> bool { return (Common::Move (this)); }
+            Globals::GetTranslation ("k_name_action_move"), [this] () -> bool { return (Common::Move (this)); }
         },
         {
-            Globals::GetTranslation ("k_action_name_transform"), [this] () -> bool { return (Common::Transform (this)); }
+            Globals::GetTranslation ("k_name_action_transform"), [this] () -> bool { return (Common::Transform (this)); }
         },
     };
 }
 
 std::string Lord::GetIcon ()
 {
-    return (Dye (Globals::GetTranslation ("k_pawn_icon_lord"), m_Faction));
+    return (Dye (Globals::GetTranslation ("k_icon_pawn_lord"), m_Faction));
 }
 
 std::string Lord::GetName ()
 {
-    return (Dye (Globals::GetTranslation ("k_pawn_name_lord"), m_Faction));
+    return (Dye (Globals::GetTranslation ("k_name_pawn_lord"), m_Faction));
+}
+
+const std::string Lord::GetType () const
+{
+    return ("lord");
 }

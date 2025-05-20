@@ -38,7 +38,7 @@ int main (__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
     Globals::GameBoard->AddPawn (new Warrior (Color::BLUE, 18, 18));
     Globals::GameBoard->AddPawn (new Castle (Color::BLUE, 19, 18));
     
-    //Globals::LoadedLanguage->Print ("k_action_log_attack", Globals::GameBoard->GetPawnAt (0, 0)->GetIcon ().c_str (), 0, 0);
+    //Globals::LoadedLanguage->Print ("k_log_action_attack", Globals::GameBoard->GetPawnAt (0, 0)->GetIcon ().c_str (), 0, 0);
 
     //std::cout << StrPretty ("Vous avez {C:GOLD}#1#{} d'or.", 10) << std::endl;
 

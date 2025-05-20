@@ -32,22 +32,19 @@
     "k_name_pawn_lord": "seigneur",
     "k_name_pawn_warrior": "guerrier",
     "k_name_pawn_farmer": "paysan",
-
-
-
+    
+    
+    
     "k_info_faction": "C'est le tour de la faction #1#",
     "k_info_gold": "Vous avez {C:GOLD}#1#{} d'or.",
     "k_info_actions": "Voici les actions possibles :",
     "k_info_pawn": "[#1#] #2# | Vie: {C:GREEN}#3#{} | Position: ({C:RED}#4#{}, {C:RED}#5#{}) | Stamina: {C:GREEN}#6#{}/{C:GREEN}#7#{}",
     "k_info_choice": "Vous avez sélectionné [#1#].",
-
-
-
-    "k_log_title_info": "Historique des actions effectuée durant ce tour :",
-    "k_log_empty_info": "-----",
-    "k_log_list": "  [{C:GOLD}#1#{}] #2#",
     
-
+    "k_info_log_title": "Historique des actions effectuée durant ce tour :",
+    "k_info_log_empty": "-----",
+    
+    
 
     "k_error_input_invalid": "{C:RED}Choix invalide.",
     "k_error_input_action_range": "{C:RED}Choisissez un nombre entre {C:GOLD}1{C:RED} et {C:GOLD}#1#{C:RED}.",
@@ -57,8 +54,9 @@
     "k_error_action_target_range": "{C:RED}Vous n'êtes à la portée d'aucun ennemis.",
     "k_error_action_move_outside": "{C:RED}Vous ne pouvez pas vous déplacer en dehors de la grille.",
     "k_error_action_move_stamina": "{C:RED}Cette unité n'a pas assez de stamina pour se déplacer aussi loin.",
-    "k_error_action_move_tile_full": "{C:RED}Vous ne pouvez pas vous déplacer sur une case déjà occupée.",
+    "k_error_action_move_tile_occupied": "{C:RED}Vous ne pouvez pas vous déplacer sur une case déjà occupée.",
     "k_error_action_create_pawn_poor": "{C:RED}Vous n'avez pas assez d'or pour construire cette unité.",
+    "k_error_action_create_pawn_tile_occupied": "{C:RED}Vous ne pouvez pas créer un pion sur une case déjà occupée.",
     "k_error_action_create_pawn_outside": "{C:RED}Vous ne pouvez pas créer un pion en dehors de la grille.",
     "k_error_action_attack_range": "{C:RED}Vous ne pouvez pas attaquer un pion à cette distance.",
 

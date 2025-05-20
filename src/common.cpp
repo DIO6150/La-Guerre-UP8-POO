@@ -41,7 +41,7 @@ bool Common::Attack (Pawn *pawn)
 
     pawn->Attack (victims [choice - 1]);
 
-    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_action_log_attack", false), victims [choice - 1]->GetName (), victims [choice - 1]->m_PositionX, victims [choice - 1]->m_PositionY));
+    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_action_attack", false), victims [choice - 1]->GetName (), victims [choice - 1]->m_PositionX, victims [choice - 1]->m_PositionY));
     return (true);
 }
 
@@ -64,7 +64,7 @@ bool Common::Move (Pawn *pawn)
 
     if (Globals::GameBoard->GetPawnAt (x, y))
     {
-        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_tile_full_error")));
+        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_move_tile_occupied")));
         return (false);
     }
 
@@ -77,7 +77,7 @@ bool Common::Move (Pawn *pawn)
     Globals::GameBoard->MovePawn (pawn, x, y);
     pawn->Move (x, y);
     
-    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_action_log_move"), pawn->GetName ().c_str (), old_x, old_y, x, y));
+    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_action_move"), pawn->GetName ().c_str (), old_x, old_y, x, y));
     // TODO : moving pawns from the Pawn::Move method should not move on the board too
     return (true);
 }
@@ -89,23 +89,23 @@ bool Common::Transform (Pawn *pawn)
     Globals::GameBoard->RemovePawnAt (pawn->m_PositionX, pawn->m_PositionY);
     Globals::GameBoard->AddPawn (castle);
 
-    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_action_log_transform"), castle->m_PositionX, castle->m_PositionY));
+    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_action_transform"), castle->m_PositionX, castle->m_PositionY));
     return (true);
 }
 
 bool Common::CreatePawn (Pawn *pawn)
 {
     char choice;
-    Globals::Print ("k_create_pawn_pos_ask");
+    Globals::Print ("k_ask_action_create_pawn_pos");
 
     std::cin >> choice;
 
     int x, y;
 
-    char north_letter = Globals::GetTranslation ("k_north_icon")[0];
-    char south_letter = Globals::GetTranslation ("k_south_icon")[0];
-    char west_letter = Globals::GetTranslation ("k_west_icon")[0];
-    char east_letter = Globals::GetTranslation ("k_east_icon")[0];
+    char north_letter = Globals::GetTranslation ("k_icon_north")[0];
+    char south_letter = Globals::GetTranslation ("k_icon_south")[0];
+    char west_letter = Globals::GetTranslation ("k_icon_west")[0];
+    char east_letter = Globals::GetTranslation ("k_icon_east")[0];
 
     if (choice == north_letter)
     {
@@ -134,23 +134,23 @@ bool Common::CreatePawn (Pawn *pawn)
     else
     {
         std::cout << choice << std::endl;
-        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_input_unknown_char_error"), choice));
+        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_input_unknown_char"), choice));
         return (false);
     }
 
     if (x < 0 || x >= Globals::GameBoard->GetSize () || y < 0 || y >= Globals::GameBoard->GetSize ())
     {
-        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_action_create_pawn_outside_error")));
+        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_create_pawn_outside")));
         return (false);
     }
 
     if (Globals::GameBoard->GetPawnAt (x, y) != nullptr)
     {
-        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_tile_full_error")));
+        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_create_pawn_tile_occupied")));
         return (false);
     }
 
-    Globals::Print ("k_create_pawn_type_ask");
+    Globals::Print ("k_ask_action_create_pawn_type");
 
     choice = 0;
     
@@ -159,10 +159,10 @@ bool Common::CreatePawn (Pawn *pawn)
     Pawn *np;
     
     
-    char f_letter = Globals::GetTranslation ("k_pawn_short_farmer")[0];
-    char w_letter = Globals::GetTranslation ("k_pawn_short_warrior")[0];
-    char l_letter = Globals::GetTranslation ("k_pawn_short_lord")[0];
-    char c_letter = Globals::GetTranslation ("k_pawn_short_castle")[0];
+    char f_letter = Globals::GetTranslation ("k_short_pawn_farmer")[0];
+    char w_letter = Globals::GetTranslation ("k_short_pawn_warrior")[0];
+    char l_letter = Globals::GetTranslation ("k_short_pawn_lord")[0];
+    char c_letter = Globals::GetTranslation ("k_short_pawn_castle")[0];
     
     
     if (choice == f_letter)
@@ -172,7 +172,7 @@ bool Common::CreatePawn (Pawn *pawn)
         {
             delete np;
             
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_not_enought_gold_error")));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_create_pawn_poor")));
             return (false);
         }
         
@@ -186,7 +186,7 @@ bool Common::CreatePawn (Pawn *pawn)
         {
             delete np;
             
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_not_enought_gold_error")));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_create_pawn_poor")));
             return (false);
         }
         
@@ -200,7 +200,7 @@ bool Common::CreatePawn (Pawn *pawn)
         {
             delete np;
             
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_not_enought_gold_error")));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_create_pawn_poor")));
             return (false);
         }
         
@@ -214,7 +214,7 @@ bool Common::CreatePawn (Pawn *pawn)
         {
             delete np;
             
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_not_enought_gold_error")));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_action_create_pawn_poor")));
             return (false);
         }
         
@@ -223,13 +223,13 @@ bool Common::CreatePawn (Pawn *pawn)
     
     else
     {
-        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_input_unknown_char_error"), choice));
+        Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_error_input_unknown_char"), choice));
         return (false);
     }
 
     Globals::GameBoard->RemovePlayerGold (np->m_GoldCost);
     
-    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_action_log_create_pawn"), np->GetName ().c_str (), np->m_PositionX, np->m_PositionY));
+    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_action_create_pawn"), np->GetName ().c_str (), np->m_PositionX, np->m_PositionY));
     return (true);
 }
 
@@ -297,7 +297,7 @@ static std::vector <Action> GenerateSettingsList ()
             int i = 1;
             for (auto& lang : langs)
             {
-                Globals::Print ("k_common_option", i, lang.name.c_str ());
+                Globals::Print ("k_common_list_element", i, lang.name.c_str ());
                 ++i;
             }
 
@@ -313,7 +313,7 @@ static std::vector <Action> GenerateSettingsList ()
 
             langs [--choice].func ();
 
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_action_log_lang_change"), langs [choice].name.c_str ()));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_action_lang_change"), langs [choice].name.c_str ()));
             return (true);
         }
     });
@@ -348,7 +348,7 @@ static std::vector <Action> GenerateActionList (bool& continue_turn)
                 
                 if (actions.size () == 0)
                 {
-                    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_no_action")));
+                    Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_short_no_action")));
                     return (false);
                 }
                 
@@ -431,12 +431,12 @@ static std::vector <Action> GenerateActionList (bool& continue_turn)
 
                 Globals::Print ("k_ask_save_save_overwrite");
                 std::cin >> answer;
-                if (answer == Globals::GetTranslation ("k_yes"))
+                if (answer == Globals::GetTranslation ("k_short_yes"))
                 {
                     
                 }
 
-                else if (answer == Globals::GetTranslation ("k_no"))
+                else if (answer == Globals::GetTranslation ("k_short_no"))
                 {
                     Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_cancel_action"), Globals::GetTranslation ("k_name_action_save").c_str ()));
                     return (false);
@@ -459,7 +459,7 @@ static std::vector <Action> GenerateActionList (bool& continue_turn)
             file << save_data.dump (4);
             file.close ();
 
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_saved_game")));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_save_save_game")));
 
             return (true);
         }
@@ -540,7 +540,7 @@ static std::vector <Action> GenerateActionList (bool& continue_turn)
 
             Globals::ActionLogs.clear ();
 
-            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_load_game")));
+            Globals::ActionLogs.push_back (StrPretty (Globals::GetTranslation ("k_log_save_load_game")));
 
             return (true);
         }
@@ -564,7 +564,7 @@ static std::vector <Action> GenerateActionList (bool& continue_turn)
             int i = 1;
             for (auto& action : actions)
             {
-                Globals::Print ("k_common_option", i, action.name.c_str ());
+                Globals::Print ("k_common_list_element", i, action.name.c_str ());
                 ++i;
             }
 
@@ -620,21 +620,20 @@ void Common::Play ()
     Globals::GameBoard->AddPlayerGold (gold_earned);
 
     if (gold_earned > 0)
-        actions_log.push_back (StrPretty ( Globals::GetTranslation ("k_log_list"), 0, StrPretty (Globals::GetTranslation ("k_log_gold"), gold_earned).c_str ()));
+        actions_log.push_back (StrPretty ( Globals::GetTranslation ("k_common_list_element"), 0, StrPretty (Globals::GetTranslation ("k_info_gold"), gold_earned).c_str ()));
     
     while (continue_turn)
     {
         ClearScreen ();
         PrintBoard ();
         Globals::Print ("k_info_faction", get_playing_faction ().c_str ());
-        Globals::Print ("k_log_title_info");
+        Globals::Print ("k_info_log_title");
         for (auto& l : actions_log)
         {
             Globals::PrintPretty (l);
         }
-        Globals::Print ("k_log_empty_info");
+        Globals::Print ("k_info_log_empty");
         Globals::Print ("k_info_gold", Globals::GameBoard->GetPlayerGold ());
-        Globals::Print ("k_info_choice");
 
         actions = GenerateActionList (continue_turn);
         for (int i = 0; i < (int) actions.size (); ++i)
@@ -671,7 +670,7 @@ void Common::Play ()
                 ++i;
             }
 
-            if (i != 0) actions_log.push_back(StrPretty (Globals::GetTranslation ("k_log_list"), actions_log.size (), action_log.c_str ()));
+            if (i != 0) actions_log.push_back(StrPretty (Globals::GetTranslation ("k_common_list_element"), actions_log.size (), action_log.c_str ()));
 
             action_log = "";
             Globals::ActionLogs.clear ();

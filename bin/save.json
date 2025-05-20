@@ -2,7 +2,7 @@
     "mael": {
         "board": [
             {
-                "faction": 0,
+                "faction": 1,
                 "health": 20,
                 "movement": 0,
                 "position": [
@@ -12,7 +12,17 @@
                 "type": "castle"
             },
             {
-                "faction": 0,
+                "faction": 1,
+                "health": 5,
+                "movement": 0,
+                "position": [
+                    2,
+                    0
+                ],
+                "type": "lord"
+            },
+            {
+                "faction": 1,
                 "health": 10,
                 "movement": 3,
                 "position": [
@@ -22,7 +32,17 @@
                 "type": "warrior"
             },
             {
-                "faction": 1,
+                "faction": 4,
+                "health": 1,
+                "movement": 0,
+                "position": [
+                    19,
+                    15
+                ],
+                "type": "farmer"
+            },
+            {
+                "faction": 4,
                 "health": 10,
                 "movement": 3,
                 "position": [
@@ -32,7 +52,7 @@
                 "type": "warrior"
             },
             {
-                "faction": 1,
+                "faction": 4,
                 "health": 20,
                 "movement": 0,
                 "position": [
@@ -42,7 +62,7 @@
                 "type": "castle"
             },
             {
-                "faction": 1,
+                "faction": 4,
                 "health": 5,
                 "movement": 1,
                 "position": [
@@ -52,15 +72,15 @@
                 "type": "lord"
             }
         ],
-        "faction_turn": 0,
+        "faction_turn": 1,
         "gold": [
             [
-                0,
-                15
+                1,
+                11
             ],
             [
-                1,
-                15
+                4,
+                1
             ]
         ]
     }

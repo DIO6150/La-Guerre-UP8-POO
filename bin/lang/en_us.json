@@ -63,6 +63,7 @@
     "k_error_action_create_pawn_outside": "{C:RED}You can't create a pawn outside the grid.",
     "k_error_action_attack_range": "{C:RED}You can't attack a pawn from this distance.",
 
+    "k_error_save_file_unable_open": "{C:RED}Couldn't open save file.",
     "k_error_save_data_no": "{C:RED}No saved data.",
 
     "k_log_action_attack": "You attacked enemy pawn #1# ({C:RED}#2#{}, {C:RED}#3#{}).",

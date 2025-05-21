@@ -12,12 +12,18 @@ namespace Common
     bool Move (Pawn *pawn);
     bool Transform (Pawn *pawn);
     bool CreatePawn (Pawn *pawn);
+    bool LoadGame ();
+    bool SaveGame ();
+    bool Settings ();
+    bool NewGame  ();
     
     void PrintBoard ();
 
-    void Play ();
+    std::string GetColoredPlayingFaction ();
 
-    void Menu ();
+    int GetConsoleColumns ();
+
+    std::vector <Action> GeneratePlayingActions (bool& continue_turn);
 
     void ClearScreen ();
 }

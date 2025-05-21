@@ -1,12 +1,4 @@
 make functions const when necessary and think about & and &&
 
-make a better input function than cin << /!\ Urgent en vrai
-
-générer une map en début de partie
-
 ajouter un bouton dans les parametres qui permet de toggle on/off les couleurs
-
-creer une fonction qui permet de créer génériquement un menu (avec des choix et tout)
-
-ajouter un genre de menu principal ? (un truc animé ça pourrait être rigolo à voir parce qu'il faut que je tavaille sur d'autres trucs aussi)
 

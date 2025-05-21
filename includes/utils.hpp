@@ -27,5 +27,3 @@ std::optional<Argument> tryParseString(const std::string& token);
 std::vector<Argument> getUserInputs(const std::vector<ArgSpec>& specs, std::string question);
 std::optional<std::vector<Argument>> getUserInputsNoErr(const std::vector<ArgSpec>& specs, std::string question);
 
-bool LoadGame ();
-void Settings ();

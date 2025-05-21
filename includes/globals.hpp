@@ -20,6 +20,8 @@ namespace Globals
 
     extern int State;
 
+    extern int FirstGold;
+
     extern std::map<std::string, std::string> Language;
     extern std::vector<std::string> ActionLogs;
     

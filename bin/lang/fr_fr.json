@@ -70,7 +70,9 @@
     "k_error_action_create_pawn_tile_occupied": "{C:RED}Vous ne pouvez pas créer un pion sur une case déjà occupée.",
     "k_error_action_create_pawn_outside": "{C:RED}Vous ne pouvez pas créer un pion en dehors de la grille.",
     "k_error_action_attack_range": "{C:RED}Vous ne pouvez pas attaquer un pion à cette distance.",
-
+    
+    "k_error_save_file_unable_open": "{C:RED}N'a pas pu ouvrir le fichier de sauvegarde.\n{C:GOLD}#1#{}",
+    "k_error_save_json_parse": "{C:RED}Couldn't parse save data, file may be corrupted.\n{C:GOLD}#1#{}",
     "k_error_save_data_no": "{C:RED}Aucune données sauvegardées.",
     
 

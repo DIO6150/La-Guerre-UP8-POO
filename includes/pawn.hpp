@@ -22,6 +22,8 @@ public:
     int m_GoldProduced;
     int m_GoldCost;
 
+    bool m_CanAttack;
+
     Pawn (Color faction, int x, int y, int attack, int health, int mv_cost, int gold_produced, int gold_cost);
 
     virtual ~Pawn () = 0;

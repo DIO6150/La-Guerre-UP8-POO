@@ -22,6 +22,8 @@ namespace Globals
 
     extern int FirstGold;
 
+    extern bool CanContinue;
+
     extern std::map<std::string, std::string> Language;
     extern std::vector<std::string> ActionLogs;
     

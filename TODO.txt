@@ -1,4 +1,2 @@
-make functions const when necessary and think about & and &&
 
-ajouter un bouton dans les parametres qui permet de toggle on/off les couleurs
 

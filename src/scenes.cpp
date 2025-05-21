@@ -19,18 +19,28 @@ void Play ()
     
     bool continue_turn = true;
 
-    // Calculate gold earned at begining of turn 
-    int gold_earned = 0;
-    for (auto& pawn : Globals::GameBoard->GetAllPawns ())
+    // Hacky way of spawning gold only after the first 2 turns (RED then BLUE) Modify 2 if want more players
+    if (Globals::FirstGold >= 2)
     {
-        if (pawn->m_Faction != Globals::GameBoard->GetPlayingFaction ()) continue;
-        gold_earned += pawn->m_GoldProduced;
-    }
-    Globals::GameBoard->AddPlayerGold (gold_earned);
+        // Calculate gold earned at begining of turn 
+        int gold_earned = 0;
+        for (auto& pawn : Globals::GameBoard->GetAllPawns ())
+        {
+            if (pawn->m_Faction != Globals::GameBoard->GetPlayingFaction ()) continue;
+            gold_earned += pawn->m_GoldProduced;
 
-    if (gold_earned > 0)
-        actions_log.push_back (Globals::GetPrettyfiedTranslation ("k_common_list_element", 0, Globals::GetPrettyfiedTranslation ("k_info_gold", gold_earned)));
+            // The pawns are now revigorated !
+            pawn->m_RemainingMovement = pawn->m_MovementCost;
+            pawn->m_CanAttack = true;
+        }
+        Globals::GameBoard->AddPlayerGold (gold_earned);
+        
+        if (gold_earned > 0)
+        actions_log.push_back (Globals::GetPrettyfiedTranslation ("k_common_list_element", 1, Globals::GetPrettyfiedTranslation ("k_log_action_end_gold", gold_earned)));
+    }
     
+    Globals::FirstGold ++;
+
     while (continue_turn)
     {
         Common::ClearScreen ();
@@ -81,17 +91,29 @@ void Play ()
         Globals::ActionLogs.clear ();
     }
 
-    Globals::GameBoard->NextPlayer ();
+    if (Globals::State == Globals::GAME) Globals::GameBoard->NextPlayer ();
 }
 
 void Menu ()
 {
     std::vector<Action> actions;
 
+    if (Globals::CanContinue)
+    {
+        actions.push_back ((Action){
+            Globals::GetPrettyfiedTranslation ("k_name_action_continue"),
+            []() -> bool {
+                Globals::State = Globals::GAME;
+                return (true);
+            }
+        });
+    }
+
     actions.push_back ((Action){
         Globals::GetPrettyfiedTranslation ("k_name_action_new_game"),
         []() -> bool {
             Globals::State = Globals::GAME;
+            Globals::CanContinue = true;
             Common::NewGame ();
             return (true);
         }

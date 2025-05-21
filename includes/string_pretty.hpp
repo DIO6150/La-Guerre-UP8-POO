@@ -179,10 +179,42 @@ inline std::string StrColor(std::string text)
     return result.str();
 }
 
+inline std::string StrTab(const std::string& format) {
+    std::regex tabRegex(R"(@(\d+)@)");
+    std::smatch match;
+
+    std::string result;
+    size_t pos = 0;       // position dans la chaîne d'origine
+    size_t col = 0;       // position courante dans la ligne (colonne console)
+
+    while (std::regex_search(format.begin() + pos, format.end(), match, tabRegex)) {
+        size_t matchPos = match.position(0) + pos;
+        std::string before = format.substr(pos, matchPos - pos);
+        result += before;
+        col += before.length();
+
+        int targetCol = std::stoi(match[1].str());
+        if (targetCol > static_cast<int>(col)) {
+            result.append(targetCol - col, ' ');
+            col = targetCol;
+        }
+
+        pos = matchPos + match.length(0);
+    }
+
+    // Ajouter ce qui reste
+    std::string remaining = format.substr(pos);
+    result += remaining;
+    col += remaining.length();
+
+    return result;
+}
+
 template <typename... Args>
 std::string StrPretty(const std::string& format, Args&&... args)
-{
-    std::string withArgs = StrArgs(format, std::forward<Args>(args)...);
-    std::string withColor = StrColor(withArgs);
+{   
+    std::string withArgs = StrArgs (format, std::forward<Args> (args)...);
+    std::string withTabs = StrTab (withArgs);
+    std::string withColor = StrColor (withTabs);
     return (withColor);
 }

@@ -18,12 +18,10 @@ namespace Common
     bool NewGame  ();
     
     void PrintBoard ();
-
     std::string GetColoredPlayingFaction ();
-
     int GetConsoleColumns ();
-
     std::vector <Action> GeneratePlayingActions (bool& continue_turn);
+    std::string GetPawnInfo (Pawn *pawn);
 
     void ClearScreen ();
 }

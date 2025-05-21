@@ -12,6 +12,7 @@ using json = nlohmann::json;
 int Globals::State = Globals::MENU;
 
 int Globals::FirstGold = 0;
+bool Globals::CanContinue = false;
 
 std::map<std::string, std::string> Globals::Language = {};
 std::vector<std::string> Globals::ActionLogs = {};

@@ -16,24 +16,31 @@ using json = nlohmann::json;
 
 bool Common::Attack (Pawn *pawn)
 {
-    int choice = 0;
-    Globals::Print ("k_attack_target_ask");
+
+    if (!pawn->m_CanAttack) 
+    {
+        Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_error_action_attack_no"));
+        return (false);
+    }
 
     std::vector<Pawn *> victims = Globals::GameBoard->GetAttackablePawns (pawn);
 
     if (victims.size () == 0)
     {
-        Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_error_action_target_range"));
+        Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_error_action_attack_target_range"));
         return (false);
     }
 
-    while (choice <= 0 || choice > (int) victims.size ())
+    int i = 0;
+    for (auto& v : victims)
     {
-        Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_action_range_error", victims.size ()));
-        return (false);
+        Globals::Print ("k_common_list_element", ++i, GetPawnInfo (v));
     }
 
-    int cost = abs(victims [choice - 1]->m_PositionX - pawn->m_PositionX) + abs(victims [choice - 1]->m_PositionY - pawn->m_PositionY);
+    auto user_input = getUserInputs ({{"int", {}, std::make_pair (1, victims.size ())}}, Globals::GetPrettyfiedTranslation ("k_ask_action_attack_target"));
+    Pawn *victim = victims [std::get<int> (user_input [0]) - 1];
+
+    int cost = abs(victim->m_PositionX - pawn->m_PositionX) + abs(victim->m_PositionY - pawn->m_PositionY);
 
     if (cost > 1)
     {
@@ -41,9 +48,13 @@ bool Common::Attack (Pawn *pawn)
         return (false);
     }
 
-    pawn->Attack (victims [choice - 1]);
+    pawn->Attack (victim);
+    pawn->m_CanAttack = false;
 
-    Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_log_action_attack", victims [choice - 1]->GetName (), victims [choice - 1]->m_PositionX, victims [choice - 1]->m_PositionY));
+    Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_log_action_attack", victim->GetName (), victim->m_PositionX, victim->m_PositionY));
+
+    if (victim->m_Health <= 0) Globals::GameBoard->RemovePawnAt (victim->m_PositionX, victim->m_PositionY);
+
     return (true);
 }
 
@@ -194,7 +205,7 @@ bool Common::LoadGame ()
 
     if (text_file == "")
     {
-        Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_error_no_saved_data"));
+        Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_error_save_data_no"));
         return (false);
     }
 
@@ -253,6 +264,7 @@ bool Common::LoadGame ()
 
         pawn_to_add->m_Health = pawn ["health"];
         pawn_to_add->m_RemainingMovement = pawn ["movement"];
+        pawn_to_add->m_CanAttack = pawn ["can_attack"];
         Globals::GameBoard->AddPawn (pawn_to_add);
     }
     
@@ -264,6 +276,8 @@ bool Common::LoadGame ()
     Globals::ActionLogs.clear ();
 
     Globals::ActionLogs.push_back (Globals::GetPrettyfiedTranslation ("k_log_save_load_game"));
+
+    Globals::CanContinue = true;
 
     return (true);
 }
@@ -357,7 +371,8 @@ bool Common::SaveGame ()
             {"position", {pawn->m_PositionX, pawn->m_PositionY}},
             {"health", pawn->m_Health},
             {"faction", pawn->m_Faction },
-            {"movement", pawn->m_RemainingMovement}
+            {"movement", pawn->m_RemainingMovement},
+            {"can_attack", pawn->m_CanAttack}
         });
     }
 
@@ -478,6 +493,18 @@ void Common::PrintBoard ()
     }
 }
 
+std::string Common::GetPawnInfo (Pawn *pawn)
+{
+    return (Globals::GetPrettyfiedTranslation ("k_info_pawn", 
+            pawn->GetIcon (), 
+            pawn->GetName (),
+            pawn->m_Health,
+            pawn->m_PositionX,
+            pawn->m_PositionY,
+            pawn->m_RemainingMovement,
+            pawn->m_MovementCost));
+}
+
 static std::vector <Action> GeneratePawnActions ()
 {
     std::vector <Action> actions {};
@@ -488,14 +515,7 @@ static std::vector <Action> GeneratePawnActions ()
 
         std::string pawn_info;
 
-        pawn_info = Globals::GetPrettyfiedTranslation ("k_info_pawn", 
-            pawn->GetIcon (), 
-            pawn->GetName (),
-            pawn->m_Health,
-            pawn->m_PositionX,
-            pawn->m_PositionY,
-            pawn->m_RemainingMovement,
-            pawn->m_MovementCost);
+        pawn_info = Common::GetPawnInfo (pawn);
 
         actions.push_back ((Action){
             pawn_info, [pawn, pawn_info]() {
@@ -541,6 +561,12 @@ std::vector <Action> Common::GeneratePlayingActions (bool& continue_turn)
     actions.push_back ((Action){
         Globals::GetTranslation ("k_name_action_save"), []() {
             return (SaveGame ());
+        }
+    });
+
+    actions.push_back ((Action){
+        Globals::GetTranslation ("k_name_action_load"), []() {
+            return (LoadGame ());
         }
     });
 

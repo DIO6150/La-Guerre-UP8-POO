@@ -23,6 +23,16 @@
             },
             {
                 "faction": 1,
+                "health": 5,
+                "movement": 1,
+                "position": [
+                    0,
+                    1
+                ],
+                "type": "lord"
+            },
+            {
+                "faction": 1,
                 "health": 10,
                 "movement": 3,
                 "position": [
@@ -76,7 +86,7 @@
         "gold": [
             [
                 1,
-                11
+                1
             ],
             [
                 4,

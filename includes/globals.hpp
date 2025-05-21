@@ -10,9 +10,17 @@
 class Board;
 
 namespace Globals
-{    
+{
+    enum
+    {
+        MENU,
+        GAME,
+        QUITTING
+    };
+
+    extern int State;
+
     extern std::map<std::string, std::string> Language;
-    extern bool play;
     extern std::vector<std::string> ActionLogs;
     
     extern Board *GameBoard;
@@ -39,6 +47,12 @@ namespace Globals
     }
 
     std::string GetTranslation (std::string string_key, bool remove_color = false);
-
+    
+    template <typename... Args>
+    std::string GetPrettyfiedTranslation (std::string string_key, Args&&... args)
+    {
+        return (StrPretty (GetTranslation (string_key), std::forward<Args> (args)...));
+    }
+    
     void Cleanup ();
 }

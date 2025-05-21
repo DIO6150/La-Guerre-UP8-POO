@@ -9,8 +9,8 @@
 
 using json = nlohmann::json;
 
+int Globals::State = Globals::MENU;
 std::map<std::string, std::string> Globals::Language = {};
-bool Globals::play = true;
 std::vector<std::string> Globals::ActionLogs = {};
 
 Board *Globals::GameBoard = new Board {};

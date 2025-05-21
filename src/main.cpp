@@ -2,8 +2,8 @@
 #include "board.hpp"
 #include "pawn.hpp"
 #include "common.hpp"
-
 #include "string_pretty.hpp"
+#include "utils.hpp"
 
 #include <iostream>
 
@@ -42,9 +42,30 @@ int main (__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 
     //std::cout << StrPretty ("Vous avez {C:GOLD}#1#{} d'or.", 10) << std::endl;
 
-    while (Globals::play)
+    // auto v = getUserInputs ({"int", "int"}, StrPretty (Globals::GetTranslation ("k_ask_action_move_pos")));
+// 
+    // int x = std::get <int> (v[0]);
+    // int y = std::get <int> (v[1]);
+    // 
+// 
+    // Globals::PrintPretty ("Vous avez entré: ({C:RED}#1#{}, {C:RED}#2#{}).", x, y);
+
+    while (true)
     {
-        Common::Play ();
+        switch (Globals::State)
+        {
+        case Globals::MENU:
+            Common::Menu ();
+            break;
+
+        case Globals::GAME:
+            Common::Play ();
+        
+        default:
+            break;
+        }
+
+        if (Globals::State == Globals::QUITTING) break;
     }
     
     Globals::Cleanup ();

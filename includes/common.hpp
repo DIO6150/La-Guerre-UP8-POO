@@ -17,5 +17,7 @@ namespace Common
 
     void Play ();
 
+    void Menu ();
+
     void ClearScreen ();
 }
